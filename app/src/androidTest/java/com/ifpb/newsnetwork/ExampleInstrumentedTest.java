@@ -1,4 +1,4 @@
-package com.example.appnoticia;
+package com.ifpb.newsnetwork;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.appnoticia", appContext.getPackageName());
+        assertEquals("com.ifpb.ifcznews", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.appnoticia;
+package com.ifpb.newsnetwork;
 
 import org.junit.Test;
 
