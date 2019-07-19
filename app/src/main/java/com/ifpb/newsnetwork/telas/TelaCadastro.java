@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -15,90 +16,92 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.ifpb.newsnetwork.R;
+import com.ifpb.newsnetwork.componentes.TextFieldBox;
+import com.ifpb.newsnetwork.componentes.UpBar;
 
 public class TelaCadastro extends Activity {
 
-    private Button b1;
-    private TextView tv;
-    private EditText et1, et2, et3, et4;
-    private LinearLayout ll;
+    private LinearLayout root;
+    private LinearLayout layouttoolbar;
+    private LinearLayout layoutform;
+    private LinearLayout layoutcamposcadastro;
 
     @TargetApi(Build.VERSION_CODES.N)
 
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        ll = new LinearLayout(this);
-        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll.setOrientation(LinearLayout.VERTICAL);
-        setContentView(ll);
+        root = new LinearLayout(this);
 
+        root.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        ));
 
-        //Adicionando a toolbar
+        root.setBackgroundColor(Color.rgb(237, 240, 241));
 
-        Toolbar toolbar = new Toolbar(this);
-        LinearLayout.LayoutParams toolBarParams = new LinearLayout.LayoutParams(
-                Toolbar.LayoutParams.MATCH_PARENT, Toolbar.LayoutParams.WRAP_CONTENT);
-        toolbar.setLayoutParams(toolBarParams);
-        toolbar.setBackgroundColor(Color.rgb(96,96,96));
-        toolbar.setPopupTheme(R.style.Widget_AppCompat_ActionBar);
-        toolbar.setVisibility(View.VISIBLE);
-        toolbar.setTitle("Criar conta");
+        root.setOrientation(LinearLayout.VERTICAL);
 
-        //toolbar.setNavigationIcon();
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //What to do on back clicked
-                onBackPressed();
-            }
-        });
-        toolbar.setTitleTextColor(Color.WHITE);
-        ll.addView(toolbar, 0);
+        setContentView(root);
 
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        setLayoutToolBar();
+        setLayoutForm();
 
-        //editText "Name"
-
-        et1 = new EditText(this);
-        et1.setId(View.generateViewId());
-        et1.setInputType(InputType.TYPE_CLASS_TEXT);
-        et1.setHint("Nome");
-        ll.addView(et1, layoutParams);
-
-        //editText "E-mail"
-
-        et2 = new EditText(this);
-        et2.setId(View.generateViewId());
-        et2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        et2.setHint("Email");
-        ll.addView(et2, layoutParams);
-
-        //editText "Password"
-
-        et3 = new EditText(this);
-        et3.setId(View.generateViewId());
-        et3.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        et3.setHint("Senha");
-        ll.addView(et3, layoutParams);
-
-        //editText "Password Confirm"
-
-        et4 = new EditText(this);
-        et4.setId(View.generateViewId());
-        et4.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        et4.setHint("Confirmar senha");
-        ll.addView(et4, layoutParams);
-
-        //Button "login"
-        
-        b1 = new Button(this);
-        b1.setId(View.generateViewId());
-        b1.setText("Cadastrar");
-        ll.addView(b1, layoutParams);
+        //setando layouts na tela
+        root.addView(layouttoolbar);
+        root.addView(layoutform);
 
     }
+        //Adicionando a toolbar
+        private void setLayoutToolBar() {
+            LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,300);
+            layouttoolbar = new LinearLayout(this);
+            layouttoolbar.setOrientation(LinearLayout.VERTICAL);
+            layouttoolbar.setLayoutParams(p);
+            UpBar upBar = new UpBar(this, "NewsNetwork");
+            layouttoolbar.addView(upBar);
+        }
+
+    private void setLayoutForm() {
+        layoutform = new LinearLayout(this);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutform.setLayoutParams(p);
+        layoutform.setOrientation(LinearLayout.VERTICAL);
+
+        setLayoutCamposCadastro();
+
+        layoutform.setPadding(20, 600, 20, 200);
+
+
+        layoutform.addView(layoutcamposcadastro);
+
+        Button b1 = new Button(this);
+        b1.setId(View.generateViewId());
+        b1.setText("Cadastrar");
+        layoutform.addView(b1);
+    }
+
+    private void setLayoutCamposCadastro(){
+
+        layoutcamposcadastro = new LinearLayout(this);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutcamposcadastro.setLayoutParams(p);
+        layoutcamposcadastro.setOrientation(LinearLayout.VERTICAL);
+
+        TextFieldBox nome = new TextFieldBox(this, "Nome");
+        TextFieldBox email = new TextFieldBox(this, "Email");
+        TextFieldBox senha = new TextFieldBox(this, "Senha");
+        TextFieldBox confirmar_senha = new TextFieldBox(this, "Confirmar Senha");
+
+        layoutcamposcadastro.addView(nome);
+        layoutcamposcadastro.addView(email);
+        layoutcamposcadastro.addView(senha);
+        layoutcamposcadastro.addView(confirmar_senha);
+
+    }
+    //Button "login"
+
+
 }
