@@ -26,10 +26,7 @@ public class TelaCadastro extends Activity {
     private LinearLayout layoutform;
     private LinearLayout layoutcamposcadastro;
 
-    @TargetApi(Build.VERSION_CODES.N)
-
-
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
