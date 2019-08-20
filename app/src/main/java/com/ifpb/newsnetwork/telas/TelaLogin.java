@@ -3,6 +3,7 @@ package com.ifpb.newsnetwork.telas;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.ifpb.newsnetwork.componentes.LinkText;
 import com.ifpb.newsnetwork.componentes.TextFieldBox;
 import com.ifpb.newsnetwork.componentes.UpBar;
+import com.ifpb.newsnetwork.rss.RssParser;
 
 public class TelaLogin extends Activity {
 
@@ -18,6 +20,7 @@ public class TelaLogin extends Activity {
     private LinearLayout layouttoolbar;
     private LinearLayout layoutcampologin;
     private LinearLayout layoutcadastro;
+    private RssParser parser = new RssParser("https://www.diariodosertao.com.br/feed");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

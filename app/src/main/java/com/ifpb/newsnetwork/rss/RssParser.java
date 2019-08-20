@@ -1,5 +1,7 @@
 package com.ifpb.newsnetwork.rss;
 
+import android.util.Log;
+
 import com.prof.rssparser.Article;
 import com.prof.rssparser.Parser;
 
@@ -21,12 +23,12 @@ public class RssParser {
         parser.onFinish(new Parser.OnTaskCompleted() {
             @Override
             public void onTaskCompleted(ArrayList<Article> arrayList) {
-
+                Log.e("teste array","============" + arrayList.get(1) + "============");
             }
 
             @Override
             public void onError() {
-
+                Log.e("erro", "erro");
             }
         });
     }

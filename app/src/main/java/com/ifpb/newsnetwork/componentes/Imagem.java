@@ -1,4 +1,4 @@
-package com.ifpb.newsnetwork.componentes;
+/*package com.ifpb.newsnetwork.componentes;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -21,7 +21,7 @@ public class Imagem extends LinearLayout {
 
     public void init(){
 
-        root = new LinearLayout(this);
+        root = new LinearLayout(this.getContext());
 
         root.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
@@ -36,10 +36,10 @@ public class Imagem extends LinearLayout {
         imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         //adding view to layout
-        linearLayout.addView(imageView);
+        root.addView(imageView);
         //make visible to program
         // setContentView(linearLayout);
 
     }
 
-}
+}*/
