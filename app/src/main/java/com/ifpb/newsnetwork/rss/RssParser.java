@@ -2,6 +2,7 @@ package com.ifpb.newsnetwork.rss;
 
 import android.util.Log;
 
+import com.ifpb.newsnetwork.model.Noticia;
 import com.prof.rssparser.Article;
 import com.prof.rssparser.Parser;
 
@@ -19,11 +20,28 @@ public class RssParser {
     }
 
     private void init() {
+
         parser.execute(url);
+
         parser.onFinish(new Parser.OnTaskCompleted() {
+
             @Override
             public void onTaskCompleted(ArrayList<Article> arrayList) {
                 Log.e("teste array","============" + arrayList.get(1) + "============");
+                for (Article artigo : arrayList) {
+
+                    Noticia artigonew = new Noticia();
+
+                    artigonew.setAutor(artigo.getAuthor());
+                    artigonew.setCategorias(artigo.getCategories());
+                    artigonew.setConteudo(artigo.getContent());
+                    artigonew.setDescricao(artigo.getDescription());
+                    artigonew.setImagem(artigo.getImage());
+                    artigonew.setLink(artigo.getLink());
+                    artigonew.setPubDate(artigo.getPubDate());
+                    artigonew.setTitulo(artigo.getTitle());
+
+                }
             }
 
             @Override
