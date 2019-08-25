@@ -1,6 +1,7 @@
 package com.ifpb.newsnetwork.telas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +21,6 @@ public class TelaLogin extends Activity {
     private LinearLayout layouttoolbar;
     private LinearLayout layoutcampologin;
     private LinearLayout layoutcadastro;
-    private RssParser parser = new RssParser("https://www.diariodosertao.com.br/feed");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,5 +79,17 @@ public class TelaLogin extends Activity {
         layoutcadastro = new LinearLayout(this);
         LinkText textocadastro =  new LinkText(this, "Ainda não tem uma conta?");
         layoutcadastro.addView(textocadastro);
+    }
+
+    private void cadastrar(){
+
+        //
+
+    }
+
+    private void onLogar(String login, String senha){
+
+        //
+
     }
 }

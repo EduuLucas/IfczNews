@@ -27,7 +27,6 @@ public class RssParser {
 
             @Override
             public void onTaskCompleted(ArrayList<Article> arrayList) {
-                Log.e("teste array","============" + arrayList.get(1) + "============");
                 for (Article artigo : arrayList) {
 
                     Noticia artigonew = new Noticia();
